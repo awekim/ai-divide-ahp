@@ -45,26 +45,40 @@
 
 <script>
     // AHP 문항 데이터 배열
-    const questions = [
-        { section: "제1계층: 3대 핵심 차원 비교", desc: "AI 격차를 결정짓는 데 무엇이 더 중요한지 비교합니다.", items: [
+const questions = [
+        { section: "제1계층: 3대 핵심 차원 비교", desc: "AI 정보격차를 결정짓는 데 무엇이 더 중요한지 비교합니다.", items: [
             { id: "L1_1", left: "Access (접근성)", right: "Proficiency (숙련도)" },
             { id: "L1_2", left: "Access (접근성)", right: "Agency (주체성)" },
             { id: "L1_3", left: "Proficiency (숙련도)", right: "Agency (주체성)" }
         ]},
-        { section: "제2계층: Access (접근성) 하위 요인 비교", desc: "", items: [
-            { id: "L2_Acc_1", left: "Infrastructure (기기/환경)", right: "Affordability (비용/시간)" },
+        { section: "제2계층: Access (접근성) 차원 내 비교", desc: "접근성을 구성하는 3가지 요인의 중요도를 비교합니다.", items: [
+            { id: "L2_Acc_1", left: "Infrastructure (기기/환경)", right: "Affordability (비용/시간 감당)" },
             { id: "L2_Acc_2", left: "Infrastructure (기기/환경)", right: "Availability (이용 용이성)" },
-            { id: "L2_Acc_3", left: "Affordability (비용/시간)", right: "Availability (이용 용이성)" }
+            { id: "L2_Acc_3", left: "Affordability (비용/시간 감당)", right: "Availability (이용 용이성)" }
         ]},
-        { section: "제2계층: Proficiency (숙련도) 하위 요인 비교", desc: "", items: [
-            { id: "L2_Pro_1", left: "Literacy (작동 원리 이해)", right: "Critical Awareness (편향 인식/팩트체크)" },
-            { id: "L2_Pro_2", left: "Literacy (작동 원리 이해)", right: "Operational Skill (상황적 도구 탐색/프롬프팅)" },
-            { id: "L2_Pro_3", left: "Critical Awareness (편향 인식/팩트체크)", right: "Operational Skill (상황적 도구 탐색/프롬프팅)" }
+        { section: "제2계층: Proficiency (숙련도) 차원 내 비교", desc: "숙련도를 구성하는 3가지 요인의 중요도를 비교합니다.", items: [
+            { id: "L2_Pro_1", left: "Literacy (작동 원리 이해)", right: "Critical Awareness (오류/편향 팩트체크)" },
+            { id: "L2_Pro_2", left: "Literacy (작동 원리 이해)", right: "Operational Skill (도구 탐색 및 프롬프팅)" },
+            { id: "L2_Pro_3", left: "Critical Awareness (오류/편향 팩트체크)", right: "Operational Skill (도구 탐색 및 프롬프팅)" }
         ]},
-        { section: "제2계층: Agency (주체성) 하위 요인 비교", desc: "", items: [
-            { id: "L2_Age_1", left: "Control (결과물 검토/교차 검증)", right: "Adaptation (문제 해결을 위한 창의적 적용)" },
-            { id: "L2_Age_2", left: "Control (결과물 검토/교차 검증)", right: "Customization (맞춤 설정/API 연동)" },
-            { id: "L2_Age_3", left: "Adaptation (문제 해결을 위한 창의적 적용)", right: "Customization (맞춤 설정/API 연동)" }
+        { section: "제3계층: Operational Skill 세부 비교", desc: "운용 능력(Operational Skill) 중 어느 행동이 더 중요한지 비교합니다.", items: [
+            { id: "L3_OpSkill_1", left: "Search (새로운 AI 도구 탐색/비교)", right: "Prompting (프롬프트 상세 작성/수집)" }
+        ]},
+        { section: "제2계층: Agency (주체성) 차원 내 비교", desc: "주체성을 구성하는 3가지 요인의 중요도를 비교합니다.", items: [
+            { id: "L2_Age_1", left: "Customization (시스템적 맞춤 설정)", right: "Control (결과물 검토/교차 검증)" },
+            { id: "L2_Age_2", left: "Customization (시스템적 맞춤 설정)", right: "Adaptation (개인적/업무적 응용)" },
+            { id: "L2_Age_3", left: "Control (결과물 검토/교차 검증)", right: "Adaptation (개인적/업무적 응용)" }
+        ]},
+        { section: "제3계층: Customization 세부 비교", desc: "맞춤 설정(Customization) 중 어느 수준의 개입이 더 중요한지 비교합니다.", items: [
+            { id: "L3_Custom_1", left: "Setting (맞춤 설정/시스템 프롬프트 조작)", right: "Dev (API 연동/프로그램 코딩)" }
+        ]},
+        { section: "제3계층: Control 세부 비교", desc: "통제력(Control) 중 어느 검증 방식이 더 중요한지 비교합니다.", items: [
+            { id: "L3_Control_1", left: "Review (지식/경험을 바탕으로 한 수정)", right: "Compare (여러 AI 간의 결과 교차 검증)" }
+        ]},
+        { section: "제3계층: Adaptation 세부 비교", desc: "주도적 활용(Adaptation) 영역 중 어느 맥락에서의 활용이 격차에 더 치명적인지 비교합니다.", items: [
+            { id: "L3_Adapt_1", left: "Daily (일상적 문제 해결)", right: "Learn (새로운 지식 학습)" },
+            { id: "L3_Adapt_2", left: "Daily (일상적 문제 해결)", right: "Work (본업 효율성 및 기획)" },
+            { id: "L3_Adapt_3", left: "Learn (새로운 지식 학습)", right: "Work (본업 효율성 및 기획)" }
         ]}
     ];
 
