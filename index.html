@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Divide 전문가 AHP 설문</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1, h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .info-group { margin-bottom: 20px; }
+        .info-group input { padding: 8px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 4px; }
+        .ahp-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; text-align: center; }
+        .ahp-table th { background-color: #3498db; color: white; padding: 10px; font-size: 0.9em;}
+        .ahp-table td { border-bottom: 1px solid #eee; padding: 12px 5px; vertical-align: middle; }
+        .factor { font-weight: bold; width: 25%; font-size: 0.95em; }
+        .radios { display: flex; justify-content: space-between; align-items: center; width: 50%; margin: 0 auto; }
+        .radios label { display: flex; flex-direction: column; font-size: 0.8em; color: #7f8c8d; cursor: pointer; }
+        .radios input { margin-top: 5px; transform: scale(1.2); }
+        button { background-color: #27ae60; color: white; border: none; padding: 15px 30px; font-size: 1.1em; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 20px; }
+        button:hover { background-color: #2ecc71; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>AI Divide 지수 산출을 위한 전문가 AHP 설문</h1>
+    <p>본 설문은 각 평가 항목들이 얼마나 상대적으로 중요한지를 묻는 쌍대비교(Pairwise Comparison) 설문입니다. 양쪽 요소 중 더 중요하다고 생각하는 쪽으로 체크해 주십시오.</p>
+    
+    <form id="ahpForm">
+        <div class="info-group">
+            <label><b>전문가 성함:</b></label><br>
+            <input type="text" name="ExpertName" required placeholder="홍길동">
+        </div>
+        <div class="info-group">
+            <label><b>소속/직무:</b></label><br>
+            <input type="text" name="ExpertRole" required placeholder="OO대학교 교수 / AI 엔지니어">
+        </div>
+
+        <div id="survey-content"></div>
+
+        <button type="submit" id="submitBtn">설문 제출하기</button>
+    </form>
+</div>
+
+<script>
+    // AHP 문항 데이터 배열
+    const questions = [
+        { section: "제1계층: 3대 핵심 차원 비교", desc: "AI 격차를 결정짓는 데 무엇이 더 중요한지 비교합니다.", items: [
+            { id: "L1_1", left: "Access (접근성)", right: "Proficiency (숙련도)" },
+            { id: "L1_2", left: "Access (접근성)", right: "Agency (주체성)" },
+            { id: "L1_3", left: "Proficiency (숙련도)", right: "Agency (주체성)" }
+        ]},
+        { section: "제2계층: Access (접근성) 하위 요인 비교", desc: "", items: [
+            { id: "L2_Acc_1", left: "Infrastructure (기기/환경)", right: "Affordability (비용/시간)" },
+            { id: "L2_Acc_2", left: "Infrastructure (기기/환경)", right: "Availability (이용 용이성)" },
+            { id: "L2_Acc_3", left: "Affordability (비용/시간)", right: "Availability (이용 용이성)" }
+        ]},
+        { section: "제2계층: Proficiency (숙련도) 하위 요인 비교", desc: "", items: [
+            { id: "L2_Pro_1", left: "Literacy (작동 원리 이해)", right: "Critical Awareness (편향 인식/팩트체크)" },
+            { id: "L2_Pro_2", left: "Literacy (작동 원리 이해)", right: "Operational Skill (상황적 도구 탐색/프롬프팅)" },
+            { id: "L2_Pro_3", left: "Critical Awareness (편향 인식/팩트체크)", right: "Operational Skill (상황적 도구 탐색/프롬프팅)" }
+        ]},
+        { section: "제2계층: Agency (주체성) 하위 요인 비교", desc: "", items: [
+            { id: "L2_Age_1", left: "Control (결과물 검토/교차 검증)", right: "Adaptation (문제 해결을 위한 창의적 적용)" },
+            { id: "L2_Age_2", left: "Control (결과물 검토/교차 검증)", right: "Customization (맞춤 설정/API 연동)" },
+            { id: "L2_Age_3", left: "Adaptation (문제 해결을 위한 창의적 적용)", right: "Customization (맞춤 설정/API 연동)" }
+        ]}
+    ];
+
+    const values = ['L9', 'L7', 'L5', 'L3', '1', 'R3', 'R5', 'R7', 'R9'];
+    const labels = ['9', '7', '5', '3', '1', '3', '5', '7', '9'];
+
+    const container = document.getElementById('survey-content');
+
+    // HTML DOM 동적 생성
+    questions.forEach(sec => {
+        let html = `<h2>${sec.section}</h2><p>${sec.desc}</p>
+                    <table class="ahp-table">
+                    <tr><th>평가 요소 A (좌측 중요)</th><th>9 - 7 - 5 - 3 - 1 - 3 - 5 - 7 - 9</th><th>평가 요소 B (우측 중요)</th></tr>`;
+        
+        sec.items.forEach(item => {
+            let radiosHtml = '';
+            values.forEach((val, idx) => {
+                let checked = val === '1' ? 'checked' : '';
+                radiosHtml += `<label>${labels[idx]}<input type="radio" name="${item.id}" value="${val}" ${checked} required></label>`;
+            });
+
+            html += `<tr>
+                        <td class="factor">${item.left}</td>
+                        <td><div class="radios">${radiosHtml}</div></td>
+                        <td class="factor">${item.right}</td>
+                     </tr>`;
+        });
+        html += `</table>`;
+        container.innerHTML += html;
+    });
+
+    // 폼 제출 시 구글 스프레드시트로 전송 (URL 수정 필수!)
+    const form = document.getElementById('ahpForm');
+    const scriptURL = 'https://script.google.com/macros/s/당신의_웹앱_URL을_여기에_붙여넣으세요/exec'; 
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = "제출 중입니다...";
+        btn.disabled = true;
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                alert("설문이 성공적으로 제출되었습니다. 감사합니다!");
+                form.reset();
+                btn.innerText = "설문 제출하기";
+                btn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("제출에 실패했습니다. 다시 시도해 주세요.");
+                btn.innerText = "설문 제출하기";
+                btn.disabled = false;
+            });
+    });
+</script>
+
+</body>
+</html>
