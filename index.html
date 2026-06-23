@@ -177,7 +177,7 @@
 
         fetch(scriptURL, { 
             method: 'POST', 
-            // mode: 'no-cors', // CORS 보안 검사를 우회하여 강제로 데이터를 전송하는 마법의 옵션
+            mode: 'no-cors', // CORS 보안 검사를 우회하여 강제로 데이터를 전송하는 마법의 옵션
             body: new FormData(form) })
             .then(response => {
                 alert("설문이 성공적으로 제출되었습니다. 감사합니다!");
