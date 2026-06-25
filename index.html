@@ -3,6 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 정보격차(AI Divide) 전문가 AHP 설문</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        h1 { text-align: center; color: #2c3e50; }
+        .intro { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        
+        /* 핵심 정의 안내표 (상단 고정용 느낌) */
+        .def-table-container { background: #e8f4fd; border: 1px solid #b6d4fe; border-radius: 8px; padding: 15px; margin-bottom: 30px; }
+        .def-table-container h3 { margin-top: 0; color: #004085; text-align: center; }
+        .def-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.9em; }
+        .def-table th, .def-table td { border: 1px solid #dee2e6; padding: 8px; text-align: left; }
+        .def-table th { background-color: #f1f7fd; color: #004085; }
+
+        /* 섹션별 상세 가이드 박스 */
+        .section-guide { background: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; margin: 30px 0 15px 0; border-radius: 4px; font-size: 0.95em; }
+        .section-guide h4 { margin-top: 0; color: #856404; }
+        .section-guide ul { margin-bottom: 0; padding-left: 20px; }
+        .section-guide li { margin-bottom: 5px; }
+
+        h2 { color: #34495e; border-bottom: 2px solid #34495e; padding-bottom: 5px; margin-top: 40px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; font-size: 0.95em; }
+        th { background-color: #2c3e50; color: white; }
+        .left-item { text-align: right; font-weight: bold; width: 25%; }
+        .right-item { text-align: left; font-weight: bold; width: 25%; }
+        .scale-group { display: flex; justify-content: space-between; align-items: center; padding: 0 10px; }
+        .scale-item { display: flex; flex-direction: column; align-items: center; font-size: 0.85em; cursor: pointer; }
+        .scale-item label { cursor: pointer; margin-top: 5px; color: #555; }
+        input[type="radio"] { cursor: pointer; transform: scale(1.2); }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        
+        button { display: block; width: 100%; padding: 15px; background-color: #27ae60; color: white; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer; font-weight: bold; margin-top: 30px; }
+        button:hover { background-color: #2ecc71; }
+        .footer { text-align: center; margin-top: 20px; font-size: 0.8em; color: #777; }
+        #loading { display: none; text-align: center; font-weight: bold; color: #2980b9; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <h1>AI 정보격차(AI Divide) AHP 설문</h1>
+    
+    <div class="intro">
+        <p>안녕하십니까, 전문가님. 본 설문은 <b>'국민의 AI 정보격차(AI Divide) 수준을 진단'</b>하기 위해 각 평가 항목들의 상대적 중요도를 묻는 쌍대비교(Pairwise Comparison)입니다.</p>
+        <p>* <b>AI의 범주:</b> 본 설문에서 일컫는 AI는 ChatGPT, 클로드, 미드저니 등 일상과 업무에 활용되는 '생성형 AI 서비스 및 챗봇'을 통칭합니다.</p>
+        <p>두 항목 중 AI 격차를 유발하는 <b>더 중요하고 핵심적인 장벽/역량</b>이 무엇인지 1~9점 척도로 평가해 주십시오.</p>
+        <div class="form-group">
+            <label for="expertName">성함</label>
+            <input type="text" id="expertName" placeholder="홍길동" required>
+        </div>
+        <div class="form-group">
+            <label for="expertRole">소속 및 직구분 (예: 학계, AI 개발자, 정책 입안자)</label>
+            <input type="text" id="expertRole" placeholder="OO대학교 교수" required>
+        </div>
+    </div>
+
+    <div class="def-table-container">
+        <h3>📊 AI 정보격차 평가 지표 한눈에 보기</h3>
+        <table class="def-table">
+            <tr>
+                <th>1. Access (접근성)</th>
+                <td><b>Infrastructure:</b> 기기/인터넷 환경<br><b>Affordability:</b> 금전적/시간적 감당 능력<br><b>Availability:</b> 필요 시 도구 이용 용이성</td>
+            </tr>
+            <tr>
+                <th>2. Proficiency (숙련성)</th>
+                <td><b>Literacy:</b> 데이터 학습 등 작동 원리 이해<br><b>Critical Awareness:</b> 한계 인식 및 팩트체크<br><b>Operational Skill:</b> 상황적 도구 선택 및 프롬프팅</td>
+            </tr>
+            <tr>
+                <th>3. Agency (활용성)</th>
+                <td><b>Customization:</b> 시스템 설정 변경 및 API/코딩 연동<br><b>Control:</b> 결과물 직접 검토/수정 및 비교 검증<br><b>Adaptation:</b> 일상/학습/업무 문제 해결을 위한 창의적 적용</td>
+            </tr>
+        </table>
+    </div>
+
+    <form id="ahpForm">
+        <div id="surveyContainer"></div>
+        <button type="submit">설문 제출하기</button>
+        <div id="loading">데이터를 제출하고 있습니다. 잠시만 기다려주세요...</div>
+    </form>
+    
+    <div class="footer">
+        응답해 주셔서 대단히 감사합니다.
+    </div>
+
+    <script>
+        // 폼 제출 시 구글 스프레드시트로 전송
+        const scriptURL = 'https://script.google.com/macros/s/당신의_웹앱_URL을_여기에_붙여넣으세요/exec';
+
+        // AHP 18개 비교 문항 (L1, L2, L3)
+        const questions = [
+            // Level 1: 3대 차원
+            { id: "L1_1", left: "Access (접근성)", right: "Proficiency (숙련성)", group: "L1", desc: "AI 격차를 결정짓는 가장 큰 상위 차원은 무엇입니까?" },
+            { id: "L1_2", left: "Access (접근성)", right: "Agency (활용성)", group: "L1" },
+            { id: "L1_3", left: "Proficiency (숙련성)", right: "Agency (활용성)", group: "L1" },
+
+            // Level 2: Access 하위
+            { id: "L2_Acc_1", left: "Infrastructure (인프라 환경)", right: "Affordability (지불/시간 감당 능력)", group: "L2_Acc" },
+            { id: "L2_Acc_2", left: "Infrastructure (인프라 환경)", right: "Availability (적시 사용성)", group: "L2_Acc" },
+            { id: "L2_Acc_3", left: "Affordability (지불/시간 감당 능력)", right: "Availability (적시 사용성)", group: "L2_Acc" },
+
+            // Level 2: Proficiency 하위
+            { id: "L2_Pro_1", left: "Literacy (작동 원리 이해)", right: "Critical Awareness (비판적 인식/팩트체크)", group: "L2_Pro" },
+            { id: "L2_Pro_2", left: "Literacy (작동 원리 이해)", right: "Operational Skill (상황적 도구 선택/프롬프팅)", group: "L2_Pro" },
+            { id: "L2_Pro_3", left: "Critical Awareness (비판적 인식/팩트체크)", right: "Operational Skill (상황적 도구 선택/프롬프팅)", group: "L2_Pro" },
+
+            // Level 2: Agency 하위
+            { id: "L2_Age_1", left: "Customization (환경/시스템 맞춤화)", right: "Control (결과물 주도적 통제/검증)", group: "L2_Age" },
+            { id: "L2_Age_2", left: "Customization (환경/시스템 맞춤화)", right: "Adaptation (일상/업무 등 목적별 적용)", group: "L2_Age" },
+            { id: "L2_Age_3", left: "Control (결과물 주도적 통제/검증)", right: "Adaptation (일상/업무 등 목적별 적용)", group: "L2_Age" },
+
+            // Level 3: 하위 개념 세부 비교
+            { id: "L3_OpSkill_1", left: "도구 탐색/선택 역량", right: "프롬프트 작성/튜닝 역량", group: "L3_OpSkill", desc: "[Operational Skill 세부] 상황에 맞는 도구를 찾는 것과 프롬프트를 정교하게 튜닝하는 것 중 무엇이 더 중요합니까?" },
+            { id: "L3_Custom_1", left: "맞춤 설정 (기본 프롬프트 세팅)", right: "API 연동/코딩 (시스템적 결합)", group: "L3_Custom", desc: "[Customization 세부] 서비스 내 설정을 변경하는 것과, 외부 프로그램(API/코딩)을 연동하는 것 중 격차 유발에 더 중요한 요소는 무엇입니까?" },
+            { id: "L3_Control_1", left: "직접 검토/수정 (교차 검증)", right: "여러 AI 비교 (복수 모델 사용)", group: "L3_Control", desc: "[Control 세부] 결과물을 스스로 검증/수정하는 것과, 여러 AI 모델을 비교해보는 태도 중 무엇이 더 중요합니까?" },
+            { id: "L3_Adapt_1", left: "Daily (일상 문제 해결)", right: "Learn (새로운 지식 학습)", group: "L3_Adapt", desc: "[Adaptation 세부] AI를 창의적으로 응용함에 있어, 적용되는 삶의 영역 중 무엇이 더 중요합니까?" },
+            { id: "L3_Adapt_2", left: "Daily (일상 문제 해결)", right: "Work (본업/업무 효율 향상)", group: "L3_Adapt" },
+            { id: "L3_Adapt_3", left: "Learn (새로운 지식 학습)", right: "Work (본업/업무 효율 향상)", group: "L3_Adapt" }
+        ];
+
+        // 렌더링 로직
+        const container = document.getElementById('surveyContainer');
+        let currentGroup = "";
+
+        const groupGuides = {
+            "L1": `<h2>제1계층 (Level 1): 3대 핵심 차원 비교</h2>`,
+            "L2_Acc": `<h2>제2계층 (Level 2): Access (접근성) 하위 요인</h2>
+                       <div class="section-guide">
+                       <h4>💡 [참고] Access 세부 개념 가이드</h4>
+                       <ul>
+                           <li><b>Infrastructure:</b> AI 활용에 필요한 인터넷, 스마트 기기 등을 갖춘 물리적 상태</li>
+                           <li><b>Affordability:</b> 금전적 비용뿐만 아니라 시간과 학습 노력까지 감당할 수 있는 심리적/경제적 여력</li>
+                           <li><b>Availability:</b> 필요로 할 때 제약 없이 도구나 서비스를 쉽게 이용할 수 있는 정도</li>
+                       </ul></div>`,
+            "L2_Pro": `<h2>제2계층 (Level 2): Proficiency (숙련도) 하위 요인</h2>
+                       <div class="section-guide">
+                       <h4>💡 [참고] Proficiency 세부 개념 가이드 (운용 실력)</h4>
+                       <ul>
+                           <li><b>Literacy:</b> 데이터 학습 개념 등 AI의 작동 원리를 이해하는 정도 (시민 리터러시)</li>
+                           <li><b>Critical Awareness:</b> 오류(할루시네이션) 가능성을 인지하고 적극적으로 팩트체크하는 태도</li>
+                           <li><b>Operational Skill:</b> 특정 과업에 맞는 AI를 선택하고, 프롬프트를 구체화/수정하는 <b>상황적 통제 능력</b></li>
+                       </ul></div>`,
+            "L2_Age": `<h2>제2계층 (Level 2): Agency (주체성) 하위 요인</h2>
+                       <div class="section-guide">
+                       <h4>💡 [참고] Agency 세부 개념 가이드 (구조적 개입과 활용)</h4>
+                       <ul>
+                           <li><b>Customization:</b> 기본 설정(Custom Instructions)을 변경하거나 API/코딩을 연동해 AI 환경을 구조적으로 재조정하는 <b>시스템적 개입 능력</b></li>
+                           <li><b>Control:</b> 결과물을 무비판적으로 수용하지 않고, 직접 검토/수정하거나 여러 AI를 비교하는 행동</li>
+                           <li><b>Adaptation:</b> AI를 남들이 쓰는 뻔한 용도를 넘어 일상, 학습, 업무 등 개인의 독특한 상황에 창의적으로 응용하는 능력</li>
+                       </ul></div>`,
+            "L3_OpSkill": `<h2>제3계층 (Level 3): 세부 역량 심층 비교</h2>`
+        };
+
+        questions.forEach((q) => {
+            if (q.group !== currentGroup) {
+                if(groupGuides[q.group]) {
+                    container.innerHTML += groupGuides[q.group];
+                }
+                currentGroup = q.group;
+            }
+
+            let html = ``;
+            if (q.desc) html += `<p style="color: #c0392b; font-size: 0.9em; font-weight: bold; margin-top: 25px;">${q.desc}</p>`;
+            
+            html += `
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="9">어느 쪽이 더 중요하며, 그 정도는 얼마입니까?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="left-item">${q.left}</td>
+                        <td colspan="7">
+                            <div class="scale-group">
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="L9" required>9<br>(절대)</label>
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="L7">7<br>(매우)</label>
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="L5">5<br>(강하게)</label>
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="L3">3<br>(약간)</label>
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="1">1<br>(동등)</label>
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="R3">3<br>(약간)</label>
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="R5">5<br>(강하게)</label>
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="R7">7<br>(매우)</label>
+                                <label class="scale-item"><input type="radio" name="${q.id}" value="R9">9<br>(절대)</label>
+                            </div>
+                        </td>
+                        <td class="right-item">${q.right}</td>
+                    </tr>
+                </tbody>
+            </table>`;
+            container.innerHTML += html;
+        });
+
+        // 데이터 전송 로직
+        const form = document.getElementById('ahpForm');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            document.querySelector('button').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+
+            // FormData 생성 및 값 정리
+            let formData = new FormData();
+            formData.append('Timestamp', new Date().toLocaleString());
+            formData.append('ExpertName', document.getElementById('expertName').value);
+            formData.append('ExpertRole', document.getElementById('expertRole').value);
+
+            questions.forEach(q => {
+                const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+                formData.append(q.id, selected ? selected.value : "");
+            });
+
+            // Google Apps Script로 전송 (CORS 우회 mode 적용)
+            fetch(scriptURL, { method: 'POST', 
+                              body: formData, 
+                              mode: 'no-cors', // CORS 보안 검사를 우회하여 강제로 데이터를 전송하는 마법의 옵션
+                             })
+                .then(() => {
+                    alert('설문이 성공적으로 제출되었습니다. 감사합니다!');
+                    window.location.reload();
+                })
+                .catch(error => {
+                    alert('제출 중 오류가 발생했습니다. 담당자에게 문의해주세요.');
+                    console.error('Error!', error.message);
+                    document.querySelector('button').style.display = 'block';
+                    document.getElementById('loading').style.display = 'none';
+                });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Divide 전문가 AHP 설문</title>
     <style>
         body { font-family: 'Malgun Gothic', sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; padding: 20px; }
