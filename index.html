@@ -9,26 +9,25 @@
         h1 { text-align: center; color: #2c3e50; }
         .intro { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
         
-        /* 핵심 정의 안내표 (상단 고정용 느낌) */
         .def-table-container { background: #e8f4fd; border: 1px solid #b6d4fe; border-radius: 8px; padding: 15px; margin-bottom: 30px; }
         .def-table-container h3 { margin-top: 0; color: #004085; text-align: center; }
         .def-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.9em; }
-        .def-table th, .def-table td { border: 1px solid #dee2e6; padding: 8px; text-align: left; }
-        .def-table th { background-color: #f1f7fd; color: #004085; }
+        .def-table th, .def-table td { border: 1px solid #dee2e6; padding: 10px; text-align: left; }
+        .def-table th { background-color: #f1f7fd; color: #004085; width: 22%; text-align: center;}
+        .highlight { color: #d35400; font-weight: bold; }
 
-        /* 섹션별 상세 가이드 박스 */
         .section-guide { background: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; margin: 30px 0 15px 0; border-radius: 4px; font-size: 0.95em; }
         .section-guide h4 { margin-top: 0; color: #856404; }
         .section-guide ul { margin-bottom: 0; padding-left: 20px; }
         .section-guide li { margin-bottom: 5px; }
 
         h2 { color: #34495e; border-bottom: 2px solid #34495e; padding-bottom: 5px; margin-top: 40px; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; font-size: 0.95em; }
-        th { background-color: #2c3e50; color: white; }
+        table.ahp-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .ahp-table th, .ahp-table td { border: 1px solid #ddd; padding: 12px; text-align: center; font-size: 0.95em; }
+        .ahp-table th { background-color: #2c3e50; color: white; }
         .left-item { text-align: right; font-weight: bold; width: 25%; }
         .right-item { text-align: left; font-weight: bold; width: 25%; }
-        .scale-group { display: flex; justify-content: space-between; align-items: center; padding: 0 10px; }
+        .scale-group { display: flex; justify-content: space-between; align-items: center; padding: 0 5px; }
         .scale-item { display: flex; flex-direction: column; align-items: center; font-size: 0.85em; cursor: pointer; }
         .scale-item label { cursor: pointer; margin-top: 5px; color: #555; }
         input[type="radio"] { cursor: pointer; transform: scale(1.2); }
@@ -37,7 +36,7 @@
         .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
         .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
         
-        button { display: block; width: 100%; padding: 15px; background-color: #27ae60; color: white; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer; font-weight: bold; margin-top: 30px; }
+        button { display: block; width: 100%; padding: 15px; background-color: #27ae60; color: white; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer; font-weight: bold; margin-top: 30px; transition: 0.3s; }
         button:hover { background-color: #2ecc71; }
         .footer { text-align: center; margin-top: 20px; font-size: 0.8em; color: #777; }
         #loading { display: none; text-align: center; font-weight: bold; color: #2980b9; margin-top: 15px; }
@@ -56,25 +55,37 @@
             <input type="text" id="expertName" placeholder="홍길동" required>
         </div>
         <div class="form-group">
-            <label for="expertRole">소속 및 직구분 (예: 학계, AI 개발자, 정책 입안자)</label>
+            <label for="expertRole">소속 및 직무 (예: 학계, AI 개발자, 정책 입안자)</label>
             <input type="text" id="expertRole" placeholder="OO대학교 교수" required>
         </div>
     </div>
 
     <div class="def-table-container">
-        <h3>📊 AI 정보격차 평가 지표 한눈에 보기</h3>
+        <h3>📊 AI 정보격차 세부 지표 (총 15개) 한눈에 보기</h3>
         <table class="def-table">
             <tr>
-                <th>1. Access (접근성)</th>
-                <td><b>Infrastructure:</b> 기기/인터넷 환경<br><b>Affordability:</b> 금전적/시간적 감당 능력<br><b>Availability:</b> 필요 시 도구 이용 용이성</td>
+                <th>1. Access<br>(접근성)</th>
+                <td>
+                    <b>Infrastructure:</b> 기기/인터넷 환경<br>
+                    <b>Affordability:</b> <span class="highlight">[Financial] 금전적 비용 여력 / [Cognitive] 시간 및 심리적 여력</span><br>
+                    <b>Availability:</b> 필요 시 도구 이용 용이성
+                </td>
             </tr>
             <tr>
-                <th>2. Proficiency (숙련성)</th>
-                <td><b>Literacy:</b> 데이터 학습 등 작동 원리 이해<br><b>Critical Awareness:</b> 한계 인식 및 팩트체크<br><b>Operational Skill:</b> 상황적 도구 선택 및 프롬프팅</td>
+                <th>2. Proficiency<br>(숙련성)</th>
+                <td>
+                    <b>Literacy:</b> 데이터 학습 등 작동 원리 이해<br>
+                    <b>Critical Awareness:</b> 한계 인식 및 팩트체크<br>
+                    <b>Operational Skill:</b> <span class="highlight">[Search] 적합한 도구 탐색 / [Prompting] 프롬프트 작성 및 튜닝</span>
+                </td>
             </tr>
             <tr>
-                <th>3. Agency (활용성)</th>
-                <td><b>Customization:</b> 시스템 설정 변경 및 API/코딩 연동<br><b>Control:</b> 결과물 직접 검토/수정 및 비교 검증<br><b>Adaptation:</b> 일상/학습/업무 문제 해결을 위한 창의적 적용</td>
+                <th>3. Agency<br>(활용성)</th>
+                <td>
+                    <b>Customization:</b> <span class="highlight">[Setting] 맞춤 설정 조작 / [Dev] API 및 프로그램 연동</span><br>
+                    <b>Control:</b> <span class="highlight">[Review] 직접 검토 및 수정 / [Compare] 여러 AI 교차 검증</span><br>
+                    <b>Adaptation:</b> <span class="highlight">[Daily] 일상적 해결 / [Learn] 지식 학습 / [Work] 본업 효율화</span>
+                </td>
             </tr>
         </table>
     </div>
@@ -90,71 +101,52 @@
     </div>
 
     <script>
-        // 폼 제출 시 구글 스프레드시트로 전송
+        // 🚨 주의: 반드시 본인의 구글 웹앱 URL로 교체하세요!
         const scriptURL = 'https://script.google.com/macros/s/당신의_웹앱_URL을_여기에_붙여넣으세요/exec';
 
-        // AHP 18개 비교 문항 (L1, L2, L3)
         const questions = [
-            // Level 1: 3대 차원
             { id: "L1_1", left: "Access (접근성)", right: "Proficiency (숙련성)", group: "L1", desc: "AI 격차를 결정짓는 가장 큰 상위 차원은 무엇입니까?" },
             { id: "L1_2", left: "Access (접근성)", right: "Agency (활용성)", group: "L1" },
             { id: "L1_3", left: "Proficiency (숙련성)", right: "Agency (활용성)", group: "L1" },
 
-            // Level 2: Access 하위
             { id: "L2_Acc_1", left: "Infrastructure (인프라 환경)", right: "Affordability (지불/시간 감당 능력)", group: "L2_Acc" },
             { id: "L2_Acc_2", left: "Infrastructure (인프라 환경)", right: "Availability (적시 사용성)", group: "L2_Acc" },
             { id: "L2_Acc_3", left: "Affordability (지불/시간 감당 능력)", right: "Availability (적시 사용성)", group: "L2_Acc" },
 
-            // Level 2: Proficiency 하위
             { id: "L2_Pro_1", left: "Literacy (작동 원리 이해)", right: "Critical Awareness (비판적 인식/팩트체크)", group: "L2_Pro" },
             { id: "L2_Pro_2", left: "Literacy (작동 원리 이해)", right: "Operational Skill (상황적 도구 선택/프롬프팅)", group: "L2_Pro" },
             { id: "L2_Pro_3", left: "Critical Awareness (비판적 인식/팩트체크)", right: "Operational Skill (상황적 도구 선택/프롬프팅)", group: "L2_Pro" },
 
-            // Level 2: Agency 하위
             { id: "L2_Age_1", left: "Customization (환경/시스템 맞춤화)", right: "Control (결과물 주도적 통제/검증)", group: "L2_Age" },
             { id: "L2_Age_2", left: "Customization (환경/시스템 맞춤화)", right: "Adaptation (일상/업무 등 목적별 적용)", group: "L2_Age" },
             { id: "L2_Age_3", left: "Control (결과물 주도적 통제/검증)", right: "Adaptation (일상/업무 등 목적별 적용)", group: "L2_Age" },
 
-            // Level 3: 하위 개념 세부 비교
-            { id: "L3_OpSkill_1", left: "도구 탐색/선택 역량", right: "프롬프트 작성/튜닝 역량", group: "L3_OpSkill", desc: "[Operational Skill 세부] 상황에 맞는 도구를 찾는 것과 프롬프트를 정교하게 튜닝하는 것 중 무엇이 더 중요합니까?" },
-            { id: "L3_Custom_1", left: "맞춤 설정 (기본 프롬프트 세팅)", right: "API 연동/코딩 (시스템적 결합)", group: "L3_Custom", desc: "[Customization 세부] 서비스 내 설정을 변경하는 것과, 외부 프로그램(API/코딩)을 연동하는 것 중 격차 유발에 더 중요한 요소는 무엇입니까?" },
-            { id: "L3_Control_1", left: "직접 검토/수정 (교차 검증)", right: "여러 AI 비교 (복수 모델 사용)", group: "L3_Control", desc: "[Control 세부] 결과물을 스스로 검증/수정하는 것과, 여러 AI 모델을 비교해보는 태도 중 무엇이 더 중요합니까?" },
-            { id: "L3_Adapt_1", left: "Daily (일상 문제 해결)", right: "Learn (새로운 지식 학습)", group: "L3_Adapt", desc: "[Adaptation 세부] AI를 창의적으로 응용함에 있어, 적용되는 삶의 영역 중 무엇이 더 중요합니까?" },
+            { id: "L3_Afford_1", left: "Financial (금전적 비용 여력)", right: "Cognitive (시간 및 심리적 여력)", group: "L3_Afford", desc: "[Affordability 세부] 유료 서비스/기기를 구매할 '재정적 여유'와 사용법을 배울 '시간/심리적 여력' 중 격차 유발에 더 치명적인 것은 무엇입니까?" },
+            
+            { id: "L3_OpSkill_1", left: "Search (도구 탐색/선택 역량)", right: "Prompting (프롬프트 작성/튜닝)", group: "L3_OpSkill", desc: "[Operational Skill 세부] 상황에 맞는 도구를 찾는 것과 프롬프트를 정교하게 튜닝하는 것 중 무엇이 더 중요합니까?" },
+            
+            { id: "L3_Custom_1", left: "Setting (플랫폼 내 기본 맞춤 설정)", right: "Dev (API 연동 및 구조적 코딩)", group: "L3_Custom", desc: "[Customization 세부] 서비스 내 설정을 변경하는 것과, 외부 프로그램(API/코딩)을 연동하는 것 중 격차 유발에 더 중요한 요소는 무엇입니까?" },
+            
+            { id: "L3_Control_1", left: "Review (개인 지식을 통한 직접 검토)", right: "Compare (여러 AI 간 교차 검증)", group: "L3_Control", desc: "[Control 세부] 결과물을 스스로 검증/수정하는 것과, 여러 AI 모델을 비교해보는 태도 중 무엇이 더 중요합니까?" },
+            
+            { id: "L3_Adapt_1", left: "Daily (일상 문제 해결)", right: "Learn (새로운 지식 학습)", group: "L3_Adapt", desc: "[Adaptation 세부] AI를 응용함에 있어, 적용되는 삶의 영역 중 계층 분리에 더 핵심적인 것은 무엇입니까?" },
             { id: "L3_Adapt_2", left: "Daily (일상 문제 해결)", right: "Work (본업/업무 효율 향상)", group: "L3_Adapt" },
             { id: "L3_Adapt_3", left: "Learn (새로운 지식 학습)", right: "Work (본업/업무 효율 향상)", group: "L3_Adapt" }
         ];
 
-        // 렌더링 로직
         const container = document.getElementById('surveyContainer');
         let currentGroup = "";
 
         const groupGuides = {
             "L1": `<h2>제1계층 (Level 1): 3대 핵심 차원 비교</h2>`,
-            "L2_Acc": `<h2>제2계층 (Level 2): Access (접근성) 하위 요인</h2>
-                       <div class="section-guide">
-                       <h4>💡 [참고] Access 세부 개념 가이드</h4>
-                       <ul>
-                           <li><b>Infrastructure:</b> AI 활용에 필요한 인터넷, 스마트 기기 등을 갖춘 물리적 상태</li>
-                           <li><b>Affordability:</b> 금전적 비용뿐만 아니라 시간과 학습 노력까지 감당할 수 있는 심리적/경제적 여력</li>
-                           <li><b>Availability:</b> 필요로 할 때 제약 없이 도구나 서비스를 쉽게 이용할 수 있는 정도</li>
-                       </ul></div>`,
-            "L2_Pro": `<h2>제2계층 (Level 2): Proficiency (숙련도) 하위 요인</h2>
-                       <div class="section-guide">
-                       <h4>💡 [참고] Proficiency 세부 개념 가이드 (운용 실력)</h4>
-                       <ul>
-                           <li><b>Literacy:</b> 데이터 학습 개념 등 AI의 작동 원리를 이해하는 정도 (시민 리터러시)</li>
-                           <li><b>Critical Awareness:</b> 오류(할루시네이션) 가능성을 인지하고 적극적으로 팩트체크하는 태도</li>
-                           <li><b>Operational Skill:</b> 특정 과업에 맞는 AI를 선택하고, 프롬프트를 구체화/수정하는 <b>상황적 통제 능력</b></li>
-                       </ul></div>`,
-            "L2_Age": `<h2>제2계층 (Level 2): Agency (주체성) 하위 요인</h2>
-                       <div class="section-guide">
-                       <h4>💡 [참고] Agency 세부 개념 가이드 (구조적 개입과 활용)</h4>
-                       <ul>
-                           <li><b>Customization:</b> 기본 설정(Custom Instructions)을 변경하거나 API/코딩을 연동해 AI 환경을 구조적으로 재조정하는 <b>시스템적 개입 능력</b></li>
-                           <li><b>Control:</b> 결과물을 무비판적으로 수용하지 않고, 직접 검토/수정하거나 여러 AI를 비교하는 행동</li>
-                           <li><b>Adaptation:</b> AI를 남들이 쓰는 뻔한 용도를 넘어 일상, 학습, 업무 등 개인의 독특한 상황에 창의적으로 응용하는 능력</li>
-                       </ul></div>`,
-            "L3_OpSkill": `<h2>제3계층 (Level 3): 세부 역량 심층 비교</h2>`
+            "L2_Acc": `<h2>제2계층 (Level 2): Access (접근성) 하위 요인</h2>`,
+            "L2_Pro": `<h2>제2계층 (Level 2): Proficiency (숙련도) 하위 요인</h2>`,
+            "L2_Age": `<h2>제2계층 (Level 2): Agency (주체성) 하위 요인</h2>`,
+            "L3_Afford": `<h2>제3계층 (Level 3): 하위 역량 심층 비교 (Affordability)</h2>`,
+            "L3_OpSkill": `<h2>제3계층 (Level 3): 하위 역량 심층 비교 (Operational Skill)</h2>`,
+            "L3_Custom": `<h2>제3계층 (Level 3): 하위 역량 심층 비교 (Customization)</h2>`,
+            "L3_Control": `<h2>제3계층 (Level 3): 하위 역량 심층 비교 (Control)</h2>`,
+            "L3_Adapt": `<h2>제3계층 (Level 3): 하위 역량 심층 비교 (Adaptation)</h2>`
         };
 
         questions.forEach((q) => {
@@ -166,10 +158,10 @@
             }
 
             let html = ``;
-            if (q.desc) html += `<p style="color: #c0392b; font-size: 0.9em; font-weight: bold; margin-top: 25px;">${q.desc}</p>`;
+            if (q.desc) html += `<p style="color: #c0392b; font-size: 0.9em; font-weight: bold; margin-top: 25px; margin-bottom: 5px;">${q.desc}</p>`;
             
             html += `
-            <table>
+            <table class="ahp-table">
                 <thead>
                     <tr>
                         <th colspan="9">어느 쪽이 더 중요하며, 그 정도는 얼마입니까?</th>
@@ -198,14 +190,60 @@
             container.innerHTML += html;
         });
 
-        // 데이터 전송 로직
+        // 🚨 새로 추가된 AHP 논리적 일관성(모순) 검증 함수
+        function getDirection(name) {
+            const el = document.querySelector(`input[name="${name}"]:checked`);
+            if (!el) return 0;
+            if (el.value.startsWith('L')) return 1;  // 좌측 항목이 더 중요함
+            if (el.value.startsWith('R')) return -1; // 우측 항목이 더 중요함
+            return 0; // 동등함
+        }
+
+        function checkAHPConsistency() {
+            // 3개의 항목이 짝을 이루는(A vs B, A vs C, B vs C) 그룹들
+            const triangleGroups = [
+                { name: "제1계층 (3대 차원)", ids: ["L1_1", "L1_2", "L1_3"] },
+                { name: "제2계층 (Access 하위)", ids: ["L2_Acc_1", "L2_Acc_2", "L2_Acc_3"] },
+                { name: "제2계층 (Proficiency 하위)", ids: ["L2_Pro_1", "L2_Pro_2", "L2_Pro_3"] },
+                { name: "제2계층 (Agency 하위)", ids: ["L2_Age_1", "L2_Age_2", "L2_Age_3"] },
+                { name: "제3계층 (Adaptation 하위)", ids: ["L3_Adapt_1", "L3_Adapt_2", "L3_Adapt_3"] }
+            ];
+
+            let errorMessages = [];
+
+            triangleGroups.forEach(group => {
+                let v1 = getDirection(group.ids[0]); // A vs B
+                let v2 = getDirection(group.ids[1]); // A vs C
+                let v3 = getDirection(group.ids[2]); // B vs C
+
+                // 완벽한 논리적 모순 (가위바위보 형태) 검증
+                // 경우 1: A가 B보다 크고(v1=1), B가 C보다 큰데(v3=1) -> C가 A보다 크다고 응답(v2=-1)
+                if (v1 === 1 && v3 === 1 && v2 === -1) {
+                    errorMessages.push(`[${group.name}] 항목의 응답에 논리적 모순이 있습니다.\n(예: A>B, B>C 라고 응답했으나, C>A 로 체크됨)`);
+                }
+                // 경우 2: A가 B보다 작고(v1=-1), B가 C보다 작은데(v3=-1) -> A가 C보다 크다고 응답(v2=1)
+                if (v1 === -1 && v3 === -1 && v2 === 1) {
+                    errorMessages.push(`[${group.name}] 항목의 응답에 논리적 모순이 있습니다.\n(예: A<B, B<C 라고 응답했으나, A>C 로 체크됨)`);
+                }
+            });
+
+            return errorMessages;
+        }
+
         const form = document.getElementById('ahpForm');
         form.addEventListener('submit', e => {
             e.preventDefault();
+            
+            // 🚨 제출 전 일관성 검사 실행
+            const errors = checkAHPConsistency();
+            if (errors.length > 0) {
+                alert("⚠️ 제출 실패: AHP 일관성(CR) 오류 발견\n\n다음 문항에서 논리적 모순(가위바위보 식의 꼬리물기 응답)이 발견되었습니다.\n연구 데이터의 신뢰성을 위해 해당 항목을 다시 한 번 논리적으로 검토해 주십시오.\n\n" + errors.join("\n\n"));
+                return; // 폼 제출 중단
+            }
+
             document.querySelector('button').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
 
-            // FormData 생성 및 값 정리
             let formData = new FormData();
             formData.append('Timestamp', new Date().toLocaleString());
             formData.append('ExpertName', document.getElementById('expertName').value);
@@ -216,21 +254,21 @@
                 formData.append(q.id, selected ? selected.value : "");
             });
 
-            // Google Apps Script로 전송 (CORS 우회 mode 적용)
-            fetch(scriptURL, { method: 'POST', 
-                              body: formData, 
-                              mode: 'no-cors', // CORS 보안 검사를 우회하여 강제로 데이터를 전송하는 마법의 옵션
-                             })
-                .then(() => {
-                    alert('설문이 성공적으로 제출되었습니다. 감사합니다!');
-                    window.location.reload();
-                })
-                .catch(error => {
-                    alert('제출 중 오류가 발생했습니다. 담당자에게 문의해주세요.');
-                    console.error('Error!', error.message);
-                    document.querySelector('button').style.display = 'block';
-                    document.getElementById('loading').style.display = 'none';
-                });
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: formData, 
+                mode: 'no-cors' 
+            })
+            .then(() => {
+                alert('설문이 성공적으로 제출되었습니다. 감사합니다!');
+                window.location.reload();
+            })
+            .catch(error => {
+                alert('제출 중 오류가 발생했습니다. 담당자에게 문의해주세요.');
+                console.error('Error!', error.message);
+                document.querySelector('button').style.display = 'block';
+                document.getElementById('loading').style.display = 'none';
+            });
         });
     </script>
 </body>
