@@ -55,6 +55,7 @@
         <p>본 설문은 <b>'국민의 AI 정보격차(AI Divide) 수준을 진단'</b>하기 위한 다차원적 측정 도구(지수)를 개발하는 연구의 일환입니다.</p>
         
         <div style="background-color: #f1f7fd; padding: 12px; border-left: 4px solid #2980b9; margin: 15px 0;">
+            <p style="margin: 0;">* <b>AI-Divide Index:</b> w1 * Access + w2 * Proficiency + w3 * Agency </p>
             <p style="margin: 0;">* <b>AI의 범주:</b> 본 설문에서 일컫는 'AI'는 ChatGPT, 클로드, 미드저니 등 일상과 업무에 활용되는 <b>'생성형 AI 서비스 및 챗봇'</b>을 통칭합니다.</p>
         </div>
 
@@ -104,23 +105,23 @@
            Part 1: 지표 타당성 평가 데이터 생성
         ========================================= */
         const evalDefinitions = [
-            { id: "Eval_Infra", cat: "1. Access", name: "Infrastructure (인프라): 기기/인터넷 환경 등 물리적 접근성", desc: "나는 AI 서비스를 원활하게 사용할 수 있는 기기(PC, 스마트폰 등)와 인터넷 환경을 충분히 갖추고 있다." },
-            { id: "Eval_Afford_Fin", cat: "1. Access", name: "Affordability [Financial]: 유료 서비스/기기 구매를 위한 금전적 비용 여력", desc: "나는 더 나은 AI 활용을 위해 유료 서비스(구독료 등)나 최신 기기를 구매할 수 있는 경제적 여유(조건)가 있다." },
-            { id: "Eval_Afford_Cog", cat: "1. Access", name: "Affordability [Cognitive]: 새로운 기술을 배우기 위한 시간 및 심리적 여력", desc: "나는 원한다면 주변이나 온라인을 통해 AI 활용법을 배울 수 있는 교육이나 정보에 쉽게 접근할 수 있는 환경이다." },
-            { id: "Eval_Avail", cat: "1. Access", name: "Availability (이용가능성): 필요 시 제약 없이 도구를 쉽게 이용할 수 있는 적시 사용성", desc: "나는 일상이나 업무에서 필요할 때 물리적/시스템적 제약 없이 AI 서비스에 접속할 수 있다." },
+            { id: "Eval_Infra", cat: "1. Access (접근성)", name: "Infrastructure (인프라): 기기/인터넷 환경 등 물리적 접근성", desc: "나는 AI 서비스를 원활하게 사용할 수 있는 기기(PC, 스마트폰 등)와 인터넷 환경을 충분히 갖추고 있다." },
+            { id: "Eval_Afford_Fin", cat: "1. Access (접근성)", name: "Affordability-Financial (가용성-경제): 유료 서비스/기기 구매를 위한 금전적 비용 여력", desc: "나는 더 나은 AI 활용을 위해 유료 서비스(구독료 등)나 최신 기기를 구매할 수 있는 경제적 여유(조건)가 있다." },
+            { id: "Eval_Afford_Cog", cat: "1. Access (접근성)", name: "Affordability-Cognitive (가용성-인지): 새로운 기술을 배우기 위한 시간 및 심리적 여력", desc: "나는 원한다면 주변이나 온라인을 통해 AI 활용법을 배울 수 있는 교육이나 정보에 쉽게 접근할 수 있는 환경이다." },
+            { id: "Eval_Avail", cat: "1. Access (접근성)", name: "Availability (이용가능성): 필요 시 제약 없이 도구를 쉽게 이용할 수 있는 적시 사용성", desc: "나는 일상이나 업무에서 필요할 때 물리적/시스템적 제약 없이 AI 서비스에 접속할 수 있다." },
             
-            { id: "Eval_Lit", cat: "2. Proficiency", name: "Literacy (문해력): 데이터 학습 등 AI의 기본 작동 원리에 대한 이해", desc: "나는 AI가 대규모 데이터를 학습하여 결과를 생성하는 기본 원리와 작동 방식을 명확히 이해하고 있다." },
-            { id: "Eval_Crit", cat: "2. Proficiency", name: "Critical Awareness: AI 결과물의 한계(오류/편향) 인식 및 팩트체크 태도", desc: "나는 AI가 생성한 결과물에 오류나 편향(할루시네이션)이 있을 수 있음을 알고, 적극적으로 팩트체크나 검증을 해본 적이 있다." },
-            { id: "Eval_Op_Search", cat: "2. Proficiency", name: "Operational Skill [Search]: 목적에 맞는 적합한 AI 도구를 탐색하고 선택하는 역량", desc: "나는 나의 목적에 가장 적합한 AI 도구가 무엇인지 스스로 구별하고 선택할 수 있는 판단 능력이 있다." },
-            { id: "Eval_Op_Prompt", cat: "2. Proficiency", name: "Operational Skill [Prompting]: 원하는 결과를 얻기 위해 프롬프트를 상세하게 작성/튜닝하는 역량", desc: "나는 AI로부터 원하는 형태의 답변을 이끌어내기 위해, 질문(프롬프트)을 구체적이고 체계적으로 작성할 수 있는 기술이 있다." },
+            { id: "Eval_Lit", cat: "2. Proficiency (숙련성)", name: "Literacy (문해력): 데이터 학습 등 AI의 기본 작동 원리에 대한 이해", desc: "나는 AI가 대규모 데이터를 학습하여 결과를 생성하는 기본 원리와 작동 방식을 명확히 이해하고 있다." },
+            { id: "Eval_Crit", cat: "2. Proficiency (숙련성)", name: "Critical Awareness (비판적 인식): AI 결과물의 한계(오류/편향) 인식 및 팩트체크 태도", desc: "나는 AI가 생성한 결과물에 오류나 편향(할루시네이션)이 있을 수 있음을 알고, 적극적으로 팩트체크나 검증을 해본 적이 있다." },
+            { id: "Eval_Op_Search", cat: "2. Proficiency (숙련성)", name: "Operational Skill-Search (조작적 기술-검색): 목적에 맞는 적합한 AI 도구를 탐색하고 선택하는 역량", desc: "나는 나의 목적에 가장 적합한 AI 도구가 무엇인지 스스로 구별하고 선택할 수 있는 판단 능력이 있다." },
+            { id: "Eval_Op_Prompt", cat: "2. Proficiency (숙련성)", name: "Operational Skill-Prompting (조작적 기술-프롬프트): 원하는 결과를 얻기 위해 프롬프트를 상세하게 작성/튜닝하는 역량", desc: "나는 AI로부터 원하는 형태의 답변을 이끌어내기 위해, 질문(프롬프트)을 구체적이고 체계적으로 작성할 수 있는 기술이 있다." },
             
-            { id: "Eval_Cus_Set", cat: "3. Agency", name: "Customization [Setting]: 플랫폼 내 기본 맞춤 설정(Custom Instructions 등) 조작 능력", desc: "나는 기성 AI를 그대로 쓰지 않고, 내 목적과 스타일에 맞게 시스템 프롬프트나 맞춤 설정을 적극적으로 세팅하여 통제한다." },
-            { id: "Eval_Cus_Dev", cat: "3. Agency", name: "Customization [Dev]: API 연동 및 외부 매크로/프로그램을 결합하는 시스템적 구조화 능력", desc: "나는 필요하다면 API를 연동하거나 코드를 작성하여, 나만의 AI 활용 환경을 주도적으로 구축해 본 적이 있다." },
-            { id: "Eval_Ctrl_Rev", cat: "3. Agency", name: "Control [Review]: AI 결과물을 그대로 쓰지 않고 개인 지식/경험으로 직접 검토 및 수정하는 태도", desc: "나는 AI가 제시한 결과를 그대로 수용하지 않고, 반드시 나의 전문성을 개입시켜 주도적으로 재가공하여 사용한다." },
-            { id: "Eval_Ctrl_Comp", cat: "3. Agency", name: "Control [Compare]: 중요한 정보 획득 시 여러 AI 모델의 결과를 교차 검증하는 태도", desc: "나는 중요 정보 획득 시 단일 AI에 의존하지 않고, 여러 AI 결과(예: 챗GPT, 클로드 등)를 능동적으로 교차 검증하며 최종 판단은 내가 주도적으로 내린다." },
-            { id: "Eval_Adapt_Dai", cat: "3. Agency", name: "Adaptation [Daily]: 일상적인 문제 해결(여행, 요리, 이메일 등)에 AI를 주도적으로 응용하는 능력", desc: "나는 일상생활의 문제를 해결할 때, AI를 단순 검색 도구가 아닌 내 삶을 기획하는 파트너로 주도적으로 다루고 있다." },
-            { id: "Eval_Adapt_Lrn", cat: "3. Agency", name: "Adaptation [Learn]: 새로운 지식을 학습하거나 어려운 개념을 공부하는 데 AI를 응용하는 능력", desc: "나는 새로운 지식을 학습할 때, 수동적인 정보 습득을 넘어 AI와 적극적으로 상호작용하며 나만의 학습 방식을 주도한다." },
-            { id: "Eval_Adapt_Wrk", cat: "3. Agency", name: "Adaptation [Work]: 본업의 효율성을 높이거나 아이디어를 기획하는 데 AI를 응용하는 능력", desc: "나는 본업(업무)에서 AI를 단순 보조 도구를 넘어, 내 업무 프로세스 자체를 혁신하고 통제하는 핵심 수단으로 쓰고 있다." }
+            { id: "Eval_Cus_Set", cat: "3. Agency (활용성)", name: "Customization-Setting (맞춤화-세팅): 플랫폼 내 기본 맞춤 설정(Custom Instructions 등) 조작 능력", desc: "나는 기성 AI를 그대로 쓰지 않고, 내 목적과 스타일에 맞게 시스템 프롬프트나 맞춤 설정을 적극적으로 세팅하여 통제한다." },
+            { id: "Eval_Cus_Dev", cat: "3. Agency (활용성)", name: "Customization-Dev (맞춤화-개발): API 연동 및 외부 매크로/프로그램을 결합하는 시스템적 구조화 능력", desc: "나는 필요하다면 API를 연동하거나 코드를 작성하여, 나만의 AI 활용 환경을 주도적으로 구축해 본 적이 있다." },
+            { id: "Eval_Ctrl_Rev", cat: "3. Agency (활용성)", name: "Control-Review (통제력-검토): AI 결과물을 그대로 쓰지 않고 개인 지식/경험으로 직접 검토 및 수정하는 태도", desc: "나는 AI가 제시한 결과를 그대로 수용하지 않고, 반드시 나의 전문성을 개입시켜 주도적으로 재가공하여 사용한다." },
+            { id: "Eval_Ctrl_Comp", cat: "3. Agency (활용성)", name: "Control-Compare (통제력-비교): 중요한 정보 획득 시 여러 AI 모델의 결과를 교차 검증하는 태도", desc: "나는 중요 정보 획득 시 단일 AI에 의존하지 않고, 여러 AI 결과(예: 챗GPT, 클로드 등)를 능동적으로 교차 검증하며 최종 판단은 내가 주도적으로 내린다." },
+            { id: "Eval_Adapt_Dai", cat: "3. Agency (활용성)", name: "Adaptation-Daily (적용력-일상): 일상적인 문제 해결(여행, 요리, 이메일 등)에 AI를 주도적으로 응용하는 능력", desc: "나는 일상생활의 문제를 해결할 때, AI를 단순 검색 도구가 아닌 내 삶을 기획하는 파트너로 주도적으로 다루고 있다." },
+            { id: "Eval_Adapt_Lrn", cat: "3. Agency (활용성)", name: "Adaptation-Learn (적용력-업무): 새로운 지식을 학습하거나 어려운 개념을 공부하는 데 AI를 응용하는 능력", desc: "나는 새로운 지식을 학습할 때, 수동적인 정보 습득을 넘어 AI와 적극적으로 상호작용하며 나만의 학습 방식을 주도한다." },
+            { id: "Eval_Adapt_Wrk", cat: "3. Agency(활용성)", name: "Adaptation-Work (적용력-업무): 본업의 효율성을 높이거나 아이디어를 기획하는 데 AI를 응용하는 능력", desc: "나는 본업(업무)에서 AI를 단순 보조 도구를 넘어, 내 업무 프로세스 자체를 혁신하고 통제하는 핵심 수단으로 쓰고 있다." }
         ];
 
         const evalContainer = document.getElementById('evaluationContainer');
