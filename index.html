@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -8,28 +8,6 @@
         body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
         h1 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
         .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-weight: bold; }
-<<<<<<< HEAD
-        
-        .intro { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 4px solid #2980b9; }
-        
-        /* 🚨 추가된 이미지 스타일 (반응형) */
-        .index-image { max-width: 100%; height: auto; display: block; margin: 0 auto 25px auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-
-        .section-title { color: #fff; background-color: #34495e; padding: 12px 20px; border-radius: 5px; margin-top: 40px; margin-bottom: 20px; }
-        
-        /* 평가 테이블 스타일 (Part 1) */
-        table.eval-table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .eval-table th, .eval-table td { border: 1px solid #ddd; padding: 12px; text-align: center; font-size: 0.95em; vertical-align: middle; }
-        .eval-table th { background-color: #f1f7fd; color: #004085; }
-        .eval-table .cat-col { font-weight: bold; background-color: #f8f9fa; }
-        .eval-table .desc-col { text-align: left; }
-        .eval-table .desc-col b { color: #2980b9; display: block; margin-bottom: 4px; font-size: 1.05em;}
-        .eval-table input[type="radio"] { transform: scale(1.3); cursor: pointer; }
-
-        /* 서술형 코멘트 */
-        .comment-box { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: inherit; margin-bottom: 40px; resize: vertical; }
-
-=======
         .intro { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 4px solid #2980b9; }
         
         .section-title { color: #fff; background-color: #34495e; padding: 12px 20px; border-radius: 5px; margin-top: 40px; margin-bottom: 20px; }
@@ -46,7 +24,6 @@
         /* 서술형 코멘트 */
         .comment-box { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: inherit; margin-bottom: 40px; resize: vertical; }
 
->>>>>>> 13b74c8b4e464356cc6deb39aa1aec0c61878d7b
         /* AHP 테이블 스타일 (Part 2) */
         table.ahp-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .ahp-table th, .ahp-table td { border: 1px solid #ddd; padding: 12px; text-align: center; font-size: 0.95em; }
@@ -74,19 +51,11 @@
     <div class="subtitle">지표 내용 타당성(CVI) 및 계층화 분석(AHP)</div>
     
     <div class="intro">
-<<<<<<< HEAD
-        <img src="ai-divideindex.jpg" alt="AI Divide 지표 구조도" class="index-image">
-
-=======
->>>>>>> 13b74c8b4e464356cc6deb39aa1aec0c61878d7b
         <p>안녕하십니까, 전문가님. 귀하의 바쁘신 일정 중에도 본 연구에 참여해 주셔서 진심으로 감사드립니다.</p>
         <p>본 설문은 <b>'국민의 AI 정보격차(AI Divide) 수준을 진단'</b>하기 위한 다차원적 측정 도구(지수)를 개발하는 연구의 일환입니다.</p>
         
         <div style="background-color: #f1f7fd; padding: 12px; border-left: 4px solid #2980b9; margin: 15px 0;">
-<<<<<<< HEAD
-=======
             <p style="margin: 0;">* <b>AI-Divide Index:</b> w1 * Access + w2 * Proficiency + w3 * Agency </p>
->>>>>>> 13b74c8b4e464356cc6deb39aa1aec0c61878d7b
             <p style="margin: 0;">* <b>AI의 범주:</b> 본 설문에서 일컫는 'AI'는 ChatGPT, 클로드, 미드저니 등 일상과 업무에 활용되는 <b>'생성형 AI 서비스 및 챗봇'</b>을 통칭합니다.</p>
         </div>
 
@@ -130,35 +99,12 @@
     </div>
 
     <script>
-<<<<<<< HEAD
-        // 연구자님의 웹앱 URL
-=======
->>>>>>> 13b74c8b4e464356cc6deb39aa1aec0c61878d7b
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwLdl5-6ORWouGm4FZVnfTIAGx-FhlrDkUXvAIM7VZcUzwSU2CGJjKX-l0L05TcjmfY/exec';
 
         /* =========================================
            Part 1: 지표 타당성 평가 데이터 생성
         ========================================= */
         const evalDefinitions = [
-<<<<<<< HEAD
-            { id: "Eval_Infra", cat: "1. Access", name: "Infrastructure (인프라)", desc: "기기/인터넷 환경 등 물리적 접근성" },
-            { id: "Eval_Afford_Fin", cat: "1. Access", name: "Affordability [Financial]", desc: "유료 서비스/기기 구매를 위한 금전적 비용 여력" },
-            { id: "Eval_Afford_Cog", cat: "1. Access", name: "Affordability [Cognitive]", desc: "새로운 기술을 배우기 위한 시간 및 심리적 여력" },
-            { id: "Eval_Avail", cat: "1. Access", name: "Availability (이용가능성)", desc: "필요 시 제약 없이 도구를 쉽게 이용할 수 있는 적시 사용성" },
-            
-            { id: "Eval_Lit", cat: "2. Proficiency", name: "Literacy (문해력)", desc: "데이터 학습 등 AI의 기본 작동 원리에 대한 이해" },
-            { id: "Eval_Crit", cat: "2. Proficiency", name: "Critical Awareness", desc: "AI 결과물의 한계(오류/편향) 인식 및 팩트체크 태도" },
-            { id: "Eval_Op_Search", cat: "2. Proficiency", name: "Operational Skill [Search]", desc: "목적에 맞는 적합한 AI 도구를 탐색하고 선택하는 역량" },
-            { id: "Eval_Op_Prompt", cat: "2. Proficiency", name: "Operational Skill [Prompting]", desc: "원하는 결과를 얻기 위해 프롬프트를 상세하게 작성/튜닝하는 역량" },
-            
-            { id: "Eval_Cus_Set", cat: "3. Agency", name: "Customization [Setting]", desc: "플랫폼 내 기본 맞춤 설정(Custom Instructions 등) 조작 능력" },
-            { id: "Eval_Cus_Dev", cat: "3. Agency", name: "Customization [Dev]", desc: "API 연동 및 외부 매크로/프로그램을 결합하는 시스템적 구조화 능력" },
-            { id: "Eval_Ctrl_Rev", cat: "3. Agency", name: "Control [Review]", desc: "AI 결과물을 그대로 쓰지 않고 개인 지식/경험으로 직접 검토 및 수정하는 태도" },
-            { id: "Eval_Ctrl_Comp", cat: "3. Agency", name: "Control [Compare]", desc: "중요한 정보 획득 시 여러 AI 모델의 결과를 교차 검증하는 태도" },
-            { id: "Eval_Adapt_Dai", cat: "3. Agency", name: "Adaptation [Daily]", desc: "일상적인 문제 해결(여행, 요리, 이메일 등)에 AI를 주도적으로 응용하는 능력" },
-            { id: "Eval_Adapt_Lrn", cat: "3. Agency", name: "Adaptation [Learn]", desc: "새로운 지식을 학습하거나 어려운 개념을 공부하는 데 AI를 응용하는 능력" },
-            { id: "Eval_Adapt_Wrk", cat: "3. Agency", name: "Adaptation [Work]", desc: "본업의 효율성을 높이거나 아이디어를 기획하는 데 AI를 응용하는 능력" }
-=======
             { id: "Eval_Infra", cat: "1. Access (접근성)", name: "Infrastructure (인프라): 기기/인터넷 환경 등 물리적 접근성", desc: "나는 AI 서비스를 원활하게 사용할 수 있는 기기(PC, 스마트폰 등)와 인터넷 환경을 충분히 갖추고 있다." },
             { id: "Eval_Afford_Fin", cat: "1. Access (접근성)", name: "Affordability-Financial (가용성-경제): 유료 서비스/기기 구매를 위한 금전적 비용 여력", desc: "나는 더 나은 AI 활용을 위해 유료 서비스(구독료 등)나 최신 기기를 구매할 수 있는 경제적 여유(조건)가 있다." },
             { id: "Eval_Afford_Cog", cat: "1. Access (접근성)", name: "Affordability-Cognitive (가용성-인지): 새로운 기술을 배우기 위한 시간 및 심리적 여력", desc: "나는 원한다면 주변이나 온라인을 통해 AI 활용법을 배울 수 있는 교육이나 정보에 쉽게 접근할 수 있는 환경이다." },
@@ -176,7 +122,6 @@
             { id: "Eval_Adapt_Dai", cat: "3. Agency (활용성)", name: "Adaptation-Daily (적용력-일상): 일상적인 문제 해결(여행, 요리, 이메일 등)에 AI를 주도적으로 응용하는 능력", desc: "나는 일상생활의 문제를 해결할 때, AI를 단순 검색 도구가 아닌 내 삶을 기획하는 파트너로 주도적으로 다루고 있다." },
             { id: "Eval_Adapt_Lrn", cat: "3. Agency (활용성)", name: "Adaptation-Learn (적용력-업무): 새로운 지식을 학습하거나 어려운 개념을 공부하는 데 AI를 응용하는 능력", desc: "나는 새로운 지식을 학습할 때, 수동적인 정보 습득을 넘어 AI와 적극적으로 상호작용하며 나만의 학습 방식을 주도한다." },
             { id: "Eval_Adapt_Wrk", cat: "3. Agency(활용성)", name: "Adaptation-Work (적용력-업무): 본업의 효율성을 높이거나 아이디어를 기획하는 데 AI를 응용하는 능력", desc: "나는 본업(업무)에서 AI를 단순 보조 도구를 넘어, 내 업무 프로세스 자체를 혁신하고 통제하는 핵심 수단으로 쓰고 있다." }
->>>>>>> 13b74c8b4e464356cc6deb39aa1aec0c61878d7b
         ];
 
         const evalContainer = document.getElementById('evaluationContainer');
@@ -185,11 +130,7 @@
                 <thead>
                     <tr>
                         <th width="15%">구분</th>
-<<<<<<< HEAD
-                        <th width="45%">지표명 및 조작적 정의</th>
-=======
                         <th width="45%">지표명 및 측정 설문 문항</th>
->>>>>>> 13b74c8b4e464356cc6deb39aa1aec0c61878d7b
                         <th width="8%">1<br>(매우 부적절)</th>
                         <th width="8%">2<br>(부적절)</th>
                         <th width="8%">3<br>(보통)</th>
@@ -283,7 +224,7 @@
                         <td colspan="7">
                             <div class="scale-group">
                                 <label class="scale-item"><input type="radio" name="${q.id}" value="L9" required>9<br>(절대)</label>
-                                <label class="scale-item"><input type="radio" name="${q.id}" value="L7">7<br>(매우)</label>
+                                <label class="scale-Witem"><input type="radio" name="${q.id}" value="L7">7<br>(매우)</label>
                                 <label class="scale-item"><input type="radio" name="${q.id}" value="L5">5<br>(강하게)</label>
                                 <label class="scale-item"><input type="radio" name="${q.id}" value="L3">3<br>(약간)</label>
                                 <label class="scale-item"><input type="radio" name="${q.id}" value="1">1<br>(동등)</label>
@@ -334,21 +275,13 @@
             });
             return errorMessages;
         }
-
-<<<<<<< HEAD
-        // 제출 로직
-=======
+W
         // 🚨 폼 제출 로직
->>>>>>> 13b74c8b4e464356cc6deb39aa1aec0c61878d7b
         const form = document.getElementById('ahpForm');
         form.addEventListener('submit', e => {
             e.preventDefault();
             
-<<<<<<< HEAD
-            // 일관성 검사 실행 (Part 2)
-=======
             // 일관성 검사 (Part 2)
->>>>>>> 13b74c8b4e464356cc6deb39aa1aec0c61878d7b
             const errors = checkAHPConsistency();
             if (errors.length > 0) {
                 alert("⚠️ 제출 실패: AHP 응답 일관성 오류 발견\n\n다음 문항에서 논리적 모순이 발견되었습니다.\n데이터의 신뢰성을 위해 해당 항목을 다시 한 번 논리적으로 검토해 주십시오.\n\n" + errors.join("\n\n"));
